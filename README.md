@@ -13,6 +13,8 @@ Will listen to input and react to !meme / !help and also !leaguenoobers
 
 ## v2 
 
+Will react to an emoji to assign the leaguenoobers role
+
 Will work as a music bot as well.
 
 ## v3 
