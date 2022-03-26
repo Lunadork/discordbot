@@ -81,9 +81,16 @@ async function newMessage(msg)
             case "awoo":
                 msg.reply("Awooo :fox:")
             break;
+
+            case "good bot":
+            case "good animubot":
+                msg.reply("<3 <3 <3 <3 <3")
+            break;
+
+            case "animubot":
+                msg.reply("Ready to go!")
+            break;
         }
-
-
 
 
     }
