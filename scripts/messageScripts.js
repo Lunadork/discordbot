@@ -1,18 +1,34 @@
 const client = require(`../index`);
 const Discord = require(`discord.js`);
+const fetch = require('node-fetch');
+
+let giphykey = "plyhLse5MeEGhzbbKjkGgEHPwyOfS5Qh";
 
 async function newMessage(msg)
 {
+
+    let content = msg.content;
+    content = content.toLowerCase()
+
     if(msg.author.bot)
     {
         console.log("I was the author - ignoring")
     }
-    else
+    else if (content.includes("!meme"))
     {
-        let content = msg.content;
-        content = content.toLowerCase();
-
-    
+        let workingArr = content.split(" ");
+        let searchTerm = workingArr[1];
+        if(!searchTerm)
+        {
+            msg.reply("I didn't get a search term, format is !meme [searchterm].  The request was: "+msg.content);
+        }
+        else
+        {
+            await getMeme(searchTerm, msg);
+        }
+    }
+    else
+    {    
         switch (content)
         {
             case "!ping":
@@ -71,6 +87,19 @@ async function newMessage(msg)
 
 
     }
+}
+
+
+async function getMeme(searchTerm, msg)
+{
+    let url = `https://api.giphy.com/v1/gifs/search?api_key=${giphykey}&limit=16&q=`;
+    url = url.concat(searchTerm.trim());
+    await fetch(url)
+        .then(response => response.json())
+        .then (data =>
+            {
+                msg.reply(data.data[0].images.original.url);
+            })
 }
 
 
