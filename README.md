@@ -1,5 +1,5 @@
 # discordbot
-## basic discordbot for Zoey's server.
+## basic discordbot for Zoe's server.
 
 ## v1 -- code this Friday/Saturday.
 
